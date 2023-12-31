@@ -14,7 +14,17 @@ while not win:
                 sel.append(num)
                 l[i][k] = 'X'
         if len(sel) >= 3:
-            if sel[2] - sel[1] and sel[1] - sel[0]:
-                win = True
+            diff = []
+            for i in sel:
+                for k in sel:
+                    if k - i in diff:
+                        win = True
+                    elif k - i != 0:
+                        diff.append(k - i)
+
     if win:
+        for i in l:
+            for k in i:
+                print(str(k) + " ", end="")
+            print()
         print("Win")
